@@ -165,29 +165,41 @@ const ProductsList = ({ selectedCategory, productName, setView, setProductDetail
         }}
       />
       <br />
-      Categorie:
-      <br />
-      <input
-        type='text'
-        style={{ width: '80%' }}
-        value={inputCategories}
-        onChange={(e) => {
-          setInputCategories(e.target.value);
-        }}
-      />
-      <br />
-      <br />
-      Marque:
-      <br />
-      <input
-        type='text'
-        style={{ width: '80%' }}
-        value={inputMarques}
-        onChange={(e) => {
-          setInputMarques(e.target.value);
-        }}
-      />
-      <br />
+    
+      <div>
+  <label>Catégorie:</label>      <br></br>
+
+  <select
+    value={inputCategories}
+    onChange={(e) => setInputCategories(e.target.value)}
+    style={{ width: '80%' }}
+  >
+    <option value="">Sélectionner une catégorie</option>
+    <option value="homme">Homme</option>
+    <option value="femme">Femme</option>
+    <option value="enfant">Enfant</option>
+  </select>
+</div>
+
+
+
+<div>
+  <label>Marque:</label>      <br></br>
+
+  <select
+    value={inputMarques}
+    onChange={(e) => setInputMarques(e.target.value)}
+    style={{ width: '80%' }}
+  >
+    <option value="">Sélectionner une marque</option>
+    <option value="Nike">Nike</option>
+    <option value="Michael Kors">Michael Kors</option>
+    <option value="Lacoste">Lacoste</option>
+    <option value="Geox">Geox</option>
+  </select>
+</div>
+<br />
+
       <button
         style={{ margin: '20px' }}
         onClick={(e) => {
@@ -200,22 +212,22 @@ const ProductsList = ({ selectedCategory, productName, setView, setProductDetail
             name: inputName,
             couleur: inputCouleur,
             price: inputPrice,
-            categories: inputCategories,
+            categories: inputCategories, 
             marque: inputMarques,
             size: inputSize,
           })
           .then((res) => {
             console.log(res);
             setRender(!render);
-            setViewUpdate(true); 
+            setViewUpdate(true);
           })
           .catch((err) => {
             console.log(err);
           });
-          
         
-
-        //  setRender(!render);
+          setRender(!render);
+        
+          window.location.reload();
         }}
       >
         Mettre à jour
