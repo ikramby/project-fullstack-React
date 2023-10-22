@@ -1,0 +1,111 @@
+import './App.css';
+import Search from "./components/Search";
+import ProductsList from './components/ProductUpdate';
+import ProductDetails from './components/ProductDetails';
+import CartList from './components/CartList';
+import NewProduct from './components/NewProduct'; 
+import React, { useState } from 'react';
+import axios from 'axios';
+
+const App = () => {
+  const [menuView, setMenuView] = useState(false);
+  const [view, setView] = useState("productList");
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [productName, setProductName] = useState("");
+  const [productDetail, setProductDetail] = useState([]);
+  const [cartListData, setCartListData] = useState([]);
+  const [showNewProduct, setShowNewProduct] = useState(false); 
+  const openNewProductPopup = () => {
+    setShowNewProduct(true);
+  };
+  
+
+  
+  const toggleNewProduct = () => {
+    setShowNewProduct(!showNewProduct); 
+  };
+  const toggleMenu = () => {
+    setMenuView(!menuView);
+  };
+
+  const switchView = (x) => {
+    setView(x);
+  };
+  const addNewProduct = (newProduct) => {
+    axios
+      .post('http://localhost:5000/api/products/addproduct', newProduct)
+      .then((response) => {
+        console.log('Opération faite avec succés', response.data);
+        window.location.reload();
+
+      })
+      .catch((error) => {
+        console.error("Erreur d'ajout de chaussure", error);
+      });
+  };
+  return (
+    <div className="App">
+      <div className="nav">
+        <span className="logo" onClick={() => {
+          setSelectedCategory(null);
+          setProductName("");
+          setView("productList");
+        }}>
+          Zalando
+        </span>
+        {view === "productList" && <Search setProductName={setProductName} />}
+        {view === "productList" && (
+          <span className="items" onClick={toggleMenu}>
+            CATEGORIE &#9660;
+          </span>
+        )}
+
+        <span className="items" onClick={() => switchView("cart")}>
+          🛒 Panier
+        </span>
+      </div>
+      {menuView && (
+        <div className="menu">
+          <span className='menu-item' onClick={() => setSelectedCategory("homme")}>Homme</span>
+          <span className='menu-item' onClick={() => setSelectedCategory("femme")}>Femme</span>
+          <span className='menu-item' onClick={() => setSelectedCategory("enfant")}>Enfant</span>
+        </div>
+      )}
+      {view === "productList" && (
+        <ProductsList
+          productName={productName}
+          selectedCategory={selectedCategory}
+          setView={setView}
+          setProductDetail={setProductDetail}
+          cartListData={cartListData}
+        />
+      )}
+      {view === "cart" && <CartList cartListData={cartListData} />}
+      {view === "details" && (
+        <ProductDetails
+          productDetail={productDetail}
+          cartListData={cartListData}
+          setCartListData={setCartListData}
+        />
+      )}
+      {showNewProduct && (
+        <NewProduct addNewProduct={addNewProduct} onClose={toggleNewProduct} />
+      )}
+     <button
+  style={{
+    borderRadius: '4px',
+    padding: '10px 20px',
+    border: 'none',
+    cursor: 'pointer',
+    marginLeft: '1000px',
+  }}
+  onClick={openNewProductPopup}
+>
+  Ajouter de nouvelles chaussures
+</button>
+
+    </div>
+  );
+};
+
+export default App;

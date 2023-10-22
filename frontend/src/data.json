@@ -1,0 +1,57 @@
+[
+   {
+     "name": "Escarpin",
+     "price": 150,
+     "size": 39,
+     "couleur": "doré",
+     "categories": "femme",
+     "marque": "Michael Kors",
+     "imageUrl": "https://www.laboutiqueduhauttalon.fr/47938-large_default/escarpins-dores-a-paillettes.jpg"
+   },
+   {
+      "name": "Ballerine",
+      "price": 350,
+      "size": 40,
+      "couleur": "noire",
+      "categories": "femme",
+      "marque": "Michael Kors",
+      "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTxEIVElICNZ69MXED6-BOLjQ_U2wU0b3clq1XP4Cfsj1JCC62X2oz7dA28TqdR3dhL74&usqp=CAU"
+    },
+   {
+     "name": "Basket",
+     "price": 250,
+     "couleur": "Bleu",
+     "size": 42,
+     "categories": "homme",
+     "marque": "Lacoste",
+     "imageUrl": "https://m.media-amazon.com/images/I/71uQq+uQDXL._AC_UX695_.jpg"
+   },
+   {
+     "name": "Basket",
+     "price": 200,
+     "couleur": "Gris",
+     "size": 30,
+     "categories": "enfant",
+     "marque": "Geox",
+     "imageUrl": "https://photos6.shoes.fr/photos/198/19841178/19841178_500_A.jpg"
+   },
+   {
+      "name": "Basket",
+      "price": 300,
+      "couleur": "Bleu",
+      "size": 37,
+      "categories": "enfant",
+      "marque": "Geox",
+      "imageUrl": "https://www.torfs.be/on/demandware.static/-/Sites-torfs-catalog-master/default/dw566f1d61/hi-res/pdp/326/326680/326680-1.jpg"
+    },
+   {
+     "name": "Basket",
+     "price": 300,
+     "couleur": "Rose",
+     "size": 36,
+     "categories": "enfant",
+     "marque": "Nike",
+     "imageUrl": "https://i8.amplience.net/i/jpl/jd_556473_a?qlt=92&w=950&h=673&v=1&fmt=auto"
+   }
+ ]
+ 
